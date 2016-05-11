@@ -13,6 +13,42 @@ npm install --save redux-actions
 import { createAction, handleAction, handleActions } from 'redux-actions';
 ```
 
+
+### (NEW) `createAPIAction(type, method, endpoint, payloadCreator = Identity, ?metaCreator)`
+
+Wraps an action creator so that its return value is the payload of a Flux Standard Action, and also creates multiple actions types that can be handled via middleware (Request, Success, and Failure Types).
+
+Also adds `meta` data, such as the `method` and `endpoint` to be used where you see fit.
+
+If no payload creator is passed, or if it's not a function, the identity function is used.
+
+
+Example:
+
+```js
+let createContact = createAPIAction('CREATE_CONTACT', 'POST', '/contacts' );
+
+expect(createContact( {name: "James Kusachi"} )).to.deep.equal({
+  type: 'CREATE_CONTACT',
+  payload: {name: "James Kusachi"},
+  meta: {
+  	api: true,
+  	method: 'POST',
+  	endpoint: '/contacts',
+  	types: [
+  		'CREATE_CONTACT_REQUEST',
+  		'CREATE_CONTACT_SUCCESS',
+  		'CREATE_CONTACT_FAILURE',
+  	]
+  }
+});
+```
+
+If the payload is an instance of an [Error
+object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error),
+redux-actions will automatically set ```action.error``` to true.
+
+
 ### `createAction(type, payloadCreator = Identity, ?metaCreator)`
 
 Wraps an action creator so that its return value is the payload of a Flux Standard Action. If no payload creator is passed, or if it's not a function, the identity function is used.
