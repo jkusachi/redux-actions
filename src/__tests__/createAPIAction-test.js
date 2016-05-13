@@ -1,7 +1,7 @@
 import { createAPIAction } from '../';
 import { isFSA } from 'flux-standard-action';
 
-describe('createAPIAction()', () => {
+describe.only('createAPIAction()', () => {
   describe('resulting action creator', () => {
     const type = 'TYPE';
 
@@ -25,9 +25,9 @@ describe('createAPIAction()', () => {
           foo: 'bar',
           endpoint: '/sample',
           types: [
-            type.concat('_REQUEST'),
-            type.concat('_SUCCESS'),
-            type.concat('_FAILURE')
+            type.concat('_GET_REQUEST'),
+            type.concat('_GET_SUCCESS'),
+            type.concat('_GET_FAILURE')
           ]
         }
       });
@@ -45,9 +45,9 @@ describe('createAPIAction()', () => {
           method: 'GET',
           endpoint: '/sample',
           types: [
-            type.concat('_REQUEST'),
-            type.concat('_SUCCESS'),
-            type.concat('_FAILURE')
+            type.concat('_GET_REQUEST'),
+            type.concat('_GET_SUCCESS'),
+            type.concat('_GET_FAILURE')
           ]
         }
       });
@@ -67,9 +67,9 @@ describe('createAPIAction()', () => {
           endpoint: '/sample',
           cid: 5,
           types: [
-            type.concat('_REQUEST'),
-            type.concat('_SUCCESS'),
-            type.concat('_FAILURE')
+            type.concat('_GET_REQUEST'),
+            type.concat('_GET_SUCCESS'),
+            type.concat('_GET_FAILURE')
           ]
         }
       });
@@ -91,9 +91,9 @@ describe('createAPIAction()', () => {
           method: 'GET',
           endpoint: '/sample',
           types: [
-            type.concat('_REQUEST'),
-            type.concat('_SUCCESS'),
-            type.concat('_FAILURE')
+            type.concat('_GET_REQUEST'),
+            type.concat('_GET_SUCCESS'),
+            type.concat('_GET_FAILURE')
           ]
         }
       });
@@ -109,9 +109,9 @@ describe('createAPIAction()', () => {
           method: 'GET',
           endpoint: '/sample',
           types: [
-            type.concat('_REQUEST'),
-            type.concat('_SUCCESS'),
-            type.concat('_FAILURE')
+            type.concat('_GET_REQUEST'),
+            type.concat('_GET_SUCCESS'),
+            type.concat('_GET_FAILURE')
           ]
         }
       });

@@ -29,9 +29,9 @@ export default function createAPIAction(type, method, endpoint, actionCreator, m
       endpoint,
       method,
       types: [
-        type.concat('_REQUEST'),
-        type.concat('_SUCCESS'),
-        type.concat('_FAILURE')
+        type.concat(`_${method.toUpperCase()}_REQUEST`),
+        type.concat(`_${method.toUpperCase()}_SUCCESS`),
+        type.concat(`_${method.toUpperCase()}_FAILURE`)
       ]
     });
 
